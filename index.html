@@ -719,6 +719,174 @@
     margin-top: 2rem;
   }
 
+  /* ENQUIRY FORM */
+  .enquiry-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 22, 40, 0.7);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .enquiry-overlay.open { display: flex; }
+
+  .enquiry-modal {
+    background: var(--white);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 520px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    overflow: hidden;
+    animation: modalIn 0.2s ease;
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .enquiry-header {
+    background: var(--blue-900);
+    padding: 1.5rem;
+    color: white;
+  }
+
+  .enquiry-header h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+  .enquiry-header p { font-size: 13px; opacity: 0.7; }
+
+  .enquiry-body { padding: 1.5rem; }
+
+  .field-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .field-group.single { grid-template-columns: 1fr; }
+
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--grey-600);
+    margin-bottom: 5px;
+  }
+
+  .field label span { color: var(--red); }
+
+  .field input {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1.5px solid var(--grey-200);
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--grey-900);
+    background: var(--white);
+    transition: border-color 0.15s;
+    outline: none;
+  }
+
+  .field input:focus { border-color: var(--esds-blue); }
+  .field input.error { border-color: var(--red); }
+
+  .field .error-msg {
+    font-size: 11px;
+    color: var(--red);
+    margin-top: 3px;
+    display: none;
+  }
+
+  .field.has-error .error-msg { display: block; }
+  .field.has-error input { border-color: var(--red); }
+
+  .enquiry-footer {
+    padding: 1rem 1.5rem;
+    background: var(--grey-50);
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .enquiry-footer .privacy {
+    font-size: 11px;
+    color: var(--grey-400);
+    flex: 1;
+  }
+
+  .btn-submit {
+    background: var(--esds-blue);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .btn-submit:hover { background: var(--blue-700); }
+  .btn-submit:disabled { background: var(--grey-300); cursor: not-allowed; }
+
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .form-success .success-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .form-success h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; color: var(--grey-900); }
+  .form-success p { font-size: 13px; color: var(--grey-600); }
+
+  .form-error-banner {
+    display: none;
+    background: var(--red-light);
+    border: 1px solid #fca5a5;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 13px;
+    color: #991b1b;
+    margin-bottom: 1rem;
+  }
+
+  /* Floating enquiry button */
+  .enquiry-fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--esds-blue);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 22px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(29,79,168,0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 200;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .enquiry-fab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(29,79,168,0.5);
+  }
+
   /* STATUS BAR */
   .status-bar {
     background: var(--grey-900);
@@ -2200,7 +2368,7 @@
         <div style="background:var(--grey-900);border-radius:8px;padding:1rem;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#94a3b8;line-height:2">
           <div><span style="color:#4ade80">2024-02-24 09:15:03</span> <span style="color:#a5f3fc">INFERENCE</span> TXN-78421 → model-v2.4.1 → BLOCK [score:0.923]</div>
           <div><span style="color:#4ade80">2024-02-24 09:03:17</span> <span style="color:#fbbf24">CONFIG</span> rules_engine: threshold updated by esds-ops-02</div>
-          <div><span style="color:#4ade80">2024-02-23 14:22:09</span> <span style="color:#818cf8">APPROVAL</span> model-v2.4.1 approved by governance@esds.in</div>
+          <div><span style="color:#4ade80">2024-02-23 14:22:09</span> <span style="color:#818cf8">APPROVAL</span> model-v2.4.1 approved by <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="73141c0516011d121d101633160017005d1a1d">[email&#160;protected]</a></div>
           <div><span style="color:#4ade80">2024-02-23 11:14:55</span> <span style="color:#f472b6">ACCESS</span> bank-client-A accessed dashboard [read-only]</div>
           <div><span style="color:#4ade80">2024-02-23 08:00:00</span> <span style="color:#a5f3fc">RETRAIN</span> pipeline triggered: drift_score=0.21 exceeded threshold</div>
           <div><span style="color:#4ade80">2024-02-22 16:45:02</span> <span style="color:#fbbf24">INGEST</span> batch-file-bank-A-2024-0222 validated: 1.2M rows</div>
@@ -2428,13 +2596,38 @@
   </div>
 </div>
 
+<!-- ========== ENQUIRY MODAL ========== -->
+<div class="enquiry-overlay" id="enquiryOverlay" onclick="handleOverlayClick(event)">
+  <div class="enquiry-modal">
+    <div class="enquiry-header">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <div><h2>Request a Demo / Enquiry</h2><p>Our team will get back to you within 1 business day</p></div>
+        <button onclick="closeEnquiry()" style="background:rgba(255,255,255,0.15);border:none;color:white;width:32px;height:32px;border-radius:50%;font-size:16px;cursor:pointer;flex-shrink:0">✕</button>
+      </div>
+    </div>
+    <div class="enquiry-body" id="enquiryForm">
+      <div class="form-error-banner" id="formErrorBanner"></div>
+      <div class="field-group">
+        <div class="field" id="field-name"><label>Full Name <span>*</span></label><input type="text" id="inp-name" placeholder="Rajesh Kumar"><div class="error-msg">Please enter your name</div></div>
+        <div class="field" id="field-company"><label>Company / Bank Name <span>*</span></label><input type="text" id="inp-company" placeholder="State Bank of India"><div class="error-msg">Please enter your company</div></div>
+      </div>
+      <div class="field-group">
+        <div class="field" id="field-email"><label>Work Email <span>*</span></label><input type="email" id="inp-email" placeholder="rajesh@sbi.co.in"><div class="error-msg">Please enter a valid email</div></div>
+        <div class="field" id="field-phone"><label>Phone Number</label><input type="tel" id="inp-phone" placeholder="+91 98765 43210"></div>
+      </div>
+    </div>
+    <div class="form-success" id="formSuccess"><div class="success-icon">✅</div><h3>Enquiry Submitted!</h3><p>Thank you. Our team will reach out within 1 business day.</p><button class="btn-submit" style="margin:1.5rem auto 0;display:inline-flex" onclick="closeEnquiry()">Close</button></div>
+    <div class="enquiry-footer" id="enquiryFooter"><div class="privacy">🔒 Your information is kept confidential.</div><button class="btn-submit" id="submitBtn" onclick="submitEnquiry()"><span id="submitBtnText">Submit Enquiry</span></button></div>
+  </div>
+</div>
+<button class="enquiry-fab" onclick="openEnquiry()">📩 Request a Demo</button>
 <!-- FOOTER -->
 <div class="page-footer">
   <div>© 2024 ESDS Software Solution Pvt. Ltd. · AI-Powered Fraud Detection Platform · v2.4.1-prod</div>
   <div>Management-ready platform documentation · Confidential</div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function showPage(id) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
@@ -2454,6 +2647,95 @@
     document.querySelectorAll('.persona-content').forEach(c => c.classList.remove('active'));
     document.getElementById('persona-' + id).classList.add('active');
     event.target.classList.add('active');
+  }
+
+  // ── Enquiry modal ──────────────────────────────────────────
+  // IMPORTANT: Replace this URL with your Railway backend URL after deployment
+  const API_URL = 'esds-enquiry-api-production.up.railway.app';
+
+  function openEnquiry() {
+    document.getElementById('enquiryOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeEnquiry() {
+    document.getElementById('enquiryOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+    // Reset form after close
+    setTimeout(resetForm, 300);
+  }
+
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('enquiryOverlay')) closeEnquiry();
+  }
+
+  function resetForm() {
+    ['name','email','phone','company'].forEach(f => {
+      const inp = document.getElementById('inp-' + f);
+      if (inp) inp.value = '';
+      const field = document.getElementById('field-' + f);
+      if (field) field.classList.remove('has-error');
+    });
+    document.getElementById('formErrorBanner').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'none';
+    document.getElementById('enquiryForm').style.display = 'block';
+    document.getElementById('enquiryFooter').style.display = 'flex';
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = false;
+    document.getElementById('submitBtnText').textContent = 'Submit Enquiry';
+  }
+
+  function validateEmail(e) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+  }
+
+  async function submitEnquiry() {
+    // Clear previous errors
+    ['name','email','company'].forEach(f => {
+      document.getElementById('field-' + f)?.classList.remove('has-error');
+    });
+    document.getElementById('formErrorBanner').style.display = 'none';
+
+    const name    = document.getElementById('inp-name').value.trim();
+    const email   = document.getElementById('inp-email').value.trim();
+    const phone   = document.getElementById('inp-phone').value.trim();
+    const company = document.getElementById('inp-company').value.trim();
+
+    // Validate
+    let hasError = false;
+    if (!name) { document.getElementById('field-name').classList.add('has-error'); hasError = true; }
+    if (!email || !validateEmail(email)) { document.getElementById('field-email').classList.add('has-error'); hasError = true; }
+    if (!company) { document.getElementById('field-company').classList.add('has-error'); hasError = true; }
+    if (hasError) return;
+
+    // Submit
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    document.getElementById('submitBtnText').textContent = 'Submitting…';
+
+    try {
+      const res = await fetch(API_URL + '/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, phone, company }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        document.getElementById('enquiryForm').style.display = 'none';
+        document.getElementById('enquiryFooter').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch (err) {
+      const banner = document.getElementById('formErrorBanner');
+      banner.textContent = '⚠ ' + (err.message || 'Could not submit. Please try again.');
+      banner.style.display = 'block';
+      btn.disabled = false;
+      document.getElementById('submitBtnText').textContent = 'Submit Enquiry';
+    }
   }
 </script>
 </body>
